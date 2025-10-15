@@ -1,17 +1,20 @@
-import { createWebHistory, createRouter } from 'vue-router';
-import Index from './components/Index.vue';
+import {createWebHistory, createRouter} from 'vue-router';
+import App from './components/App.vue';
+import IndexComponent from './components/Fruit/IndexComponent.vue';
 
 const routes = [
     {
         path: '/',
-        component: Index
+        children: [
+            {
+                path: '/fruits',
+                component: IndexComponent,
+                name: 'fruit.index'
+            }
+        ]
     },
-    {
-        path: '/fruits',
-        component: () => import('./components/Fruit/IndexComponent.vue'),
-        name: 'fruit.index'
-    }
 ]
+
 
 const router = createRouter({
     history: createWebHistory(),

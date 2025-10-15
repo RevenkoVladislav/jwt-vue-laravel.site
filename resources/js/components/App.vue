@@ -1,12 +1,14 @@
 <script>
 export default {
-    name: "Index"
+    name: "App"
 }
 </script>
 
 <template>
 <div>
-    <router-link :to="{ name: 'fruit.index' }">Fruits</router-link>
+    <nav>
+        <router-link :to="{ name: 'fruit.index' }">Fruits</router-link>
+    </nav>
     <router-view/>
 </div>
 </template>
