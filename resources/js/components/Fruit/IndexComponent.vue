@@ -6,7 +6,7 @@ export default {
 
 <template>
 <div>
-    index
+    list of fruits
 </div>
 </template>
 
