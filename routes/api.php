@@ -15,12 +15,16 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);
+
+    Route::prefix('fruits')->middleware('auth:api')->name('fruits.')->group(function () {
+        Route::get('/', Fruit\IndexController::class)->name('index');
+    });
 });
+
+
 
 Route::prefix('user')->name('user.')->group(function () {
     Route::post('/', User\StoreController::class)->name('store');
 });
 
-Route::prefix('fruits')->name('fruits.')->group(function () {
-   Route::get('/', Fruit\IndexController::class)->name('index');
-});
+
