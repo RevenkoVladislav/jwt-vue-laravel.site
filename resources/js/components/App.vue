@@ -11,6 +11,7 @@ export default {
             <li><router-link class="btn btn-primary" :to="{ name: 'fruit.index' }">Fruits</router-link></li>
             <li><router-link class="btn btn-primary" :to="{ name: 'user.login' }">Login</router-link></li>
             <li><router-link class="btn btn-primary" :to="{ name: 'user.registration' }">Registration</router-link></li>
+            <li><router-link class="btn btn-primary" :to="{ name: 'user.personal' }">Personal</router-link></li>
         </ul>
     </nav>
 

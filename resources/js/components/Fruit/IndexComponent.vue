@@ -1,10 +1,12 @@
 <script>
+import API from "../../api.js";
+
 export default {
     name: "IndexComponent",
 
     data() {
         return {
-            fruits: null
+            fruits: null,
         }
     },
 
@@ -14,11 +16,11 @@ export default {
 
     methods: {
         getFruits() {
-            axios.get('api/fruits')
+            API.get('api/auth/fruits')
                 .then( response => {
                     this.fruits = response.data.data;
                 })
-        }
+        },
     }
 }
 </script>
