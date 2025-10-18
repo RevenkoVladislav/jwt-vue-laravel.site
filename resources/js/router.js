@@ -25,6 +25,11 @@ const routes = [
                 path: 'users/personal',
                 component: () => import('./components/User/Personal.vue'),
                 name: 'user.personal',
+            },
+            {
+                path: '/:pathMatch(.*)*',
+                component: () => import('./components/NotFound.vue'),
+                name: 'notFound'
             }
         ]
     },
@@ -34,6 +39,27 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes
+})
+
+router.beforeEach((to, from, next) => {
+    const accessToken = localStorage.getItem('access_token')
+
+    //проверяем все страницы, кроме страницы с авторизацией и перенаправляем если мы не авторизованы.
+    if(to.name !== 'user.login') {
+        if (!accessToken) {
+            return next({
+                name: 'user.login'
+            })
+        }
+    }
+
+    if(to.name === 'user.login' && accessToken) {
+        return next({
+            name: 'user.personal'
+        })
+    }
+
+    next();
 })
 
 export default router;

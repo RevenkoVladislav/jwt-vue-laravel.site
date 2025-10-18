@@ -25,7 +25,7 @@ export default {
 <div class="w-25">
     <input type="email" v-model="email" class="form-control mt-3 mb-3" placeholder="email">
     <input type="password" v-model="password" class="form-control mb-3" placeholder="password">
-    <input type="submit" @click.prevent="login" class="btn btn-primary">
+    <input type="submit" @click.prevent="login" class="btn btn-primary" value="Login">
 </div>
 </template>
 
