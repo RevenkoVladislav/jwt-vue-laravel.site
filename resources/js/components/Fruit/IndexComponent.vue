@@ -1,5 +1,5 @@
 <script>
-import API from "../../api.js";
+import api from "../../api.js";
 
 export default {
     name: "IndexComponent",
@@ -16,7 +16,7 @@ export default {
 
     methods: {
         getFruits() {
-            API.get('api/auth/fruits')
+            api.get('api/auth/fruits')
                 .then( response => {
                     this.fruits = response.data.data;
                 })
