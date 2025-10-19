@@ -40,34 +40,30 @@ export default {
 <template>
     <div>
         <nav>
-            <ul>
-                <li>
                     <router-link class="btn btn-success"
                                  :to="{ name: 'fruit.index' }">Fruits
                     </router-link>
-                </li>
-                <li>
+
                     <router-link class="btn btn-primary"
                                  v-if="!accessToken"
                                  :to="{ name: 'user.login' }">Login
                     </router-link>
-                </li>
-                <li>
+
                     <router-link class="btn btn-primary"
                                  v-if="!accessToken"
                                  :to="{ name: 'user.registration' }">Registration
                     </router-link>
-                </li>
-                <li>
+
                     <router-link class="btn btn-success"
                                  v-if="accessToken"
                                  :to="{ name: 'user.personal' }">Personal
                     </router-link>
-                </li>
-                <li><a href="#"
+
+                    <a href="#"
                        v-if="accessToken"
-                       @click.prevent="logout" class="btn btn-danger">Logout</a></li>
-            </ul>
+                       @click.prevent="logout" class="btn btn-danger">Logout
+                    </a>
+
         </nav>
 
         <router-view/>
@@ -75,10 +71,10 @@ export default {
 </template>
 
 <style scoped>
-nav ul {
+nav {
     display: flex;
-    gap: 1rem;
     list-style: none;
     padding: 0;
+    gap: 1rem;
 }
 </style>
