@@ -25,6 +25,7 @@ export default {
                 window.dispatchEvent(new Event('storage'))
                 this.$router.push({ name: 'user.personal' })
             })
+                .catch(error => console.error(error))
         }
     }
 }
