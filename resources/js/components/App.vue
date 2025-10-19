@@ -1,6 +1,26 @@
 <script>
 export default {
-    name: "App"
+    name: "App",
+
+    data() {
+        return {
+            accessToken: ''
+        }
+    },
+
+    mounted(){
+        this.getAccessToken()
+    },
+
+    updated() {
+        this.getAccessToken()
+    },
+
+    methods: {
+        getAccessToken() {
+            this.accessToken = localStorage.getItem('access_token')
+        }
+    }
 }
 </script>
 
@@ -8,10 +28,17 @@ export default {
 <div>
     <nav>
         <ul>
-            <li><router-link class="btn btn-primary" :to="{ name: 'fruit.index' }">Fruits</router-link></li>
-            <li><router-link class="btn btn-primary" :to="{ name: 'user.login' }">Login</router-link></li>
-            <li><router-link class="btn btn-primary" :to="{ name: 'user.registration' }">Registration</router-link></li>
-            <li><router-link class="btn btn-primary" :to="{ name: 'user.personal' }">Personal</router-link></li>
+            <li><router-link class="btn btn-primary"
+                             :to="{ name: 'fruit.index' }">Fruits</router-link></li>
+            <li><router-link class="btn btn-primary"
+                             v-if="!accessToken"
+                             :to="{ name: 'user.login' }">Login</router-link></li>
+            <li><router-link class="btn btn-primary"
+                             v-if="!accessToken"
+                             :to="{ name: 'user.registration' }">Registration</router-link></li>
+            <li><router-link class="btn btn-primary"
+                             v-if="accessToken"
+                             :to="{ name: 'user.personal' }">Personal</router-link></li>
         </ul>
     </nav>
 

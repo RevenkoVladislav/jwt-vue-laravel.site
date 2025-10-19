@@ -45,20 +45,15 @@ router.beforeEach((to, from, next) => {
     const accessToken = localStorage.getItem('access_token')
 
     //проверяем все страницы, кроме страницы с авторизацией и перенаправляем если мы не авторизованы.
-    if(to.name !== 'user.login') {
-        if (!accessToken) {
+    if (!accessToken) {
+        if(to.name !== 'user.login' || to.name !== 'user.registration') {
+            return next()
+        } else {
             return next({
                 name: 'user.login'
             })
         }
     }
-
-    if(to.name === 'user.login' && accessToken) {
-        return next({
-            name: 'user.personal'
-        })
-    }
-
     next();
 })
 
