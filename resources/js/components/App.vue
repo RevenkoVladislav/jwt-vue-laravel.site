@@ -8,8 +8,10 @@ export default {
         }
     },
 
-    mounted(){
-        this.getAccessToken()
+    mounted() {
+        window.addEventListener('storage', () => {
+            this.getAccessToken()
+        })
     },
 
     methods: {
