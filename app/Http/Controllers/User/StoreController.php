@@ -16,7 +16,7 @@ class StoreController extends Controller
         $user = User::where('email', $data['email'])->first();
         //если мы нашли такого пользователя уже зарегистрированным, то отправляем ему сообщение
         if($user){
-            return response()->json(['message' => 'user already exist'], 400);
+            return response()->json(['error' => 'user already exist'], 403);
         } else {
             $user = User::create($data);
             $token = auth()->tokenById($user->id);
