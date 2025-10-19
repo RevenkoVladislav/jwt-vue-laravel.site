@@ -12,10 +12,6 @@ export default {
         this.getAccessToken()
     },
 
-    updated() {
-        this.getAccessToken()
-    },
-
     methods: {
         getAccessToken() {
             this.accessToken = localStorage.getItem('access_token')
