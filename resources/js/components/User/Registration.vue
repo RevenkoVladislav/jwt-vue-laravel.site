@@ -21,7 +21,9 @@ export default {
                     password_confirmation: this.password_confirmation
                 }
             ).then(response => {
-                console.log(response);
+                localStorage.setItem('access_token', response.data.access_token)
+                window.dispatchEvent(new Event('storage'))
+                this.$router.push({ name: 'user.personal' })
             })
         }
     }

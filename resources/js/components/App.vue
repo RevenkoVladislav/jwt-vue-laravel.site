@@ -4,20 +4,24 @@ export default {
 
     data() {
         return {
-            accessToken: ''
+            accessToken: localStorage.getItem('access_token') || ''
         }
     },
 
     mounted() {
         window.addEventListener('storage', () => {
-            this.getAccessToken()
+            this.refreshTokenStatus()
         })
     },
 
     methods: {
-        getAccessToken() {
-            this.accessToken = localStorage.getItem('access_token')
+        refreshTokenStatus() {
+            this.accessToken = localStorage.getItem('access_token') || ''
         }
+    },
+
+    updated() {
+        this.refreshTokenStatus()
     }
 }
 </script>
